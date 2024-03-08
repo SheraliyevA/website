@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <section class="bg-white dark:bg-gray-900">
+        <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+            {%if post.photo%}
+                <img class="h-auto max-w-lg transition-all duration-300 rounded-lg blur-sm hover:blur-none" src="{{post.photo.url}}" alt="image description">
+            {%else%}
+            <div class="container" style="width: 200px;">
+            <img class="h-auto max-w-lg transition-all duration-300 rounded-lg blur-sm hover:blur-none" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAMAAzAMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAQYDBQcEAv/EAEQQAAEDAwEEBQgIAwcFAQAAAAEAAgMEBREGEiExQSJRYXGxBxMUcoGRodEVIzIzVJOywSQ3UhYXQmKSotI0NoLC8CX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A7KiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgI4hrS5xAAGSTyRY6qBlTTyQSglkjS12OOCgQTR1EYkhkZIw8HMOQsi5uw1+g7oWODp7VM7l/9ud4roNDV09fSx1VI9skUgyHNKDOileO73KC00ElXUnoMHAcXHqCD1oufRXvVl8Lp7RTiGmyQ0hox7zxWXGvf6m/7UF8RUPZ17/U3/amzr3+pv+1BfEVC2de/1AdvRSn1XeLPWx0+pab6l/CQNwR2jkQgvqKI5GyxNkjcHMeA5rhzBUoCIiAiIgIiICIiAiIgIiIClQpHHjhB5q+hguNJJTVkYkZIMEdXaqADcNC3XZIdPbJzy4H5O8VcL5qK32Rg9KeXTOGWxM3kjrPUqrcNeW240slLVWmSSGTccyjd1HggvVFWU9dSsqaWQSRyDcQfFUnXb6i63ygsUAcGnD3OA4k8/YFXdOajfYq13mi6Shkd04XHJA6x2rq9HU0twp4q2lLJWSNy2QYyOsdiD7paeKjpoqeBoZHE0NaBw3LMtHqrUTNPwREROmmmy2NvBu7rPtVYjotXakHnKiY0NK7g0nY9zRv9+EF+fUU7NzqiFp6nSAKY5Y5D9XLG/wBR4PgqL/YGlb/115PnR17Lf1ZQ6CIbtWu9OLxw4eLSgv3DiFptV2oXeyTwNaDMzpwk/wBQ349vBVT6R1TpZw+kWem0jf8AETtNA9biParfYr7RXyDztLJsyNHTif8Aab8x2oNR5Obr6ZZzRzO+upDsjPHYPD3K2Lnt4oLjpi/Pu9ohMtJKS6SMNzs53kEDlnfnks48pEGOnbJQ7gQJR8kF6RUiPykUZeBJb5mtzvIeDj2K2Wu5Ul1pvSKGXzjOY5tPURyQetERAREQEREBERAREQEJDQSeQyiiT7t/qnwQc70nRR6h1Fca+4Dzwif0GO4Zzge4BdBFPABuhjHYGDCpHky+/u/rjxKvaDy1tto62lkpqmnY6OQYOGgEdoXPW1FVoa+ejGTz9DP0zGDklp59jh8V0uR7Y2OkfuYwFzu4b1ziwULdW364XC5AupGAgDOACeGO4b/cgv8ASz0l0pYaqDzc0J6THEA4P7FVjUkOqrjdZKS35goABiYSBodu35PHiTuwqnY77Jp26VHobpKi2+dLXNd/iG/B6g7APeuq0NXT19JHVUkgkikGQ4eB7UFLh8ne23arrrK9/PYZu+JK+JtBVtH9Zabu4PH2WvBbn2j5K/JwQUCj1RcbPVfRuqqZz4nbvOluTjr6nBY9QWV1oezUWmpP4cdN7I94aDzH+XrHJXS92mmvNE+lq2cd7HtG9h6wqhourmtt1qdNXMBzCSI88NrqGeThv70Fr07eIr3bGVUQ2ZPsys/ocOXctXqfUtHZahtJFRNqqt42iwADZ7+s9i0dgDtN61ntRJFLUnEeTyP2T7DkexfWp4qyyatbfG0vpVO/B4Ehpxgg44deUG1sN/tuopJLfW29kM5B+qc0EO68btx7FqrFF9Ba8mtkDiaaVpw3PDdlvu3qNNsq79qw3w0rqanZvyBuJxgDPNZpv5os9UfpKC+ct/HrRTyUICIiAiIgIiICIiAok+7f6p8FKiT7t/qnwQUXyZff3b1x4lXtUTyZff3b1x4lXtBqtVzOp9OXCRhw7zWM95A/dVjTn8B5Oq+rjH1kvnN/t2ArLq6Iz6auDG8fNZ9xBVasX8b5NaynjI24vOAgcch234IM+grRSVmlJ21kIkZWSuyDyDeiMHvGVq2/SWg7odz6m1zuGep3/F4A9uFv/JrOJtOeYbudTzvaRz3na/8Ab4KxV9DS3KkkpK6ISxSDBafEdRHWgmhq6evpY6qkkEsUg3OH7jkesdi9C5n/APo6Cu+/aqbZUOA44D/2EgAJ7QCuiUNZTXCkiq6SVssUoyHDd35HI9YQegLn2vGig1JabjB0XvxtdpY4YPucfcugj4c1z7yhu9Lv9poI98g3kDeek4AfpKD68ojfR71aa2Lc8nBPc4Y8VfvtbxwVB8pJ87drRRs3uyTgcd7gB4K/BuyMZ3Dcgkcd3BUGb+aLPVH6Sr8OKoM380WeqP0lBfuShTyUICIiAiIgIiICIiAok+7f6p8FKiT7t/qnwQUXyZff3b1x4lXtUTyZff3b1x4lXtB8yxNmifE8ZY9pa7uO4qgaJm+hr/X2CuxsTOOwDwLh82+C6CqjrvT8ta1l1t2RWUwBcGbi9o3hw7Qg0tHO7RWqZ6epDhbqrft/5c9F3eN4K6Ox7ZY2PY5rmuG014O5wPUqVb7hb9aWwW+6OENyiHRIwHE8NpnXyy3ktdG/UmjHujMQq7cDuxlzB3Eb2dxQX64UNNdKOWkrIhLDKNlzT8+RHELn2bjoK77y6qtdS4cd238ngD24924g8o1skb/E0dZE/qaGuHsO0PALxXrXNuuNFLRR2qWobKMETkAA8iNnJyCgvFDWU1wpI6uikEscgyHN3e/qPWOxVui05Xf2uqbxc3xOhYS6DD88sDdywPiqlY6676TfDU1NJO2gqiS+OQY2sf4h1O8e1dLbJR3u0kwy7cFVGWbbDggHce4oKTbHf2m14+tj6VJSb2Z4Frfs+85PcuiHj7Fq9PWOnsNG6npyXlztp8juLitogDiqDN/NFnqj9JV+HFUGb+aLPVH6Sgv3JQp5KEBERAREQEREBERAUSfdv9U+ClPZns60FE8mRHpF3HPbHiVe1zuvp7jo++TXCihdUUFQSXN5AE5weo54L3Dyj0OyC6gqs9QLfmguykbutUj+8eg/AVfvb80/vHoPwFX72/NB6tSaMhr5TWWyT0WsB2t25jnde77J7VqYtS6k0+RT3qgNTG3cHu3OI9YZDl7R5R6DlQVfvZ81DvKNb3DD7fVFvMdAjxQYDq7TFTl1ZZXbfMmCM59oO9BrayUYP0TZSH8AdhjPiMn4LFNq/Tkzi6SwF3aY4x4FfUGs7DTHMFkcw9bY48+KDBO7U2sAITAKahJDjtNw3PaTvJ7l8R/SmhLiDLmpt0xG2W/Zcefc7xC2v949Cd/oNUMcst+a89druz3Clkpqy2VT4njBGWZHaN6C7UFbTXCkjqqR4kjkG5w8D2rOuP6f1C+x3CR1L5yShkf0oZPtEdfVldYoKymuFIyqpJBJFINzh4d6D08OKoM380WeqP0lbnU2q2WKdtLHSPnqHs2geDPbzWt0ZaK2e6T367NLZZQRG1wwd/E93Ugu3JEHWiAiIgIiICIiAiIgIiIBAcCHDOdxXnNBRuI/g6b8pu/4L0qva0vNTZbdFNRtYZJJdnpjIAwg3HoFF+Dp/wAlvyT0Ci/CU/5Lfkq9c9TzR6QivFC2Pz0hawtdvDTvyPgrBSVTZbfBVTPZGJI2vdk4GSO1BPoFF+Dp/wAlvyT0Ci/B0/5Lfks0UsczNuKRr29bTkKZHsjYXyOaxjd5c44AQYPQKL8HT/kt+SegUX4On/Jb8lkE8PnRGJYzJx2NoEkdy0VJfppdXXK1z+aZS0sAkDycHPQ4n/zQbn0Ci/B0/wCS35J6BRfg6f8AJb8lnY9j2hzHtc079oHIXxFUQSuIimjkLeIY8EoPNVWi31VNJDLRw7DxglsYaR3FUTFw0HdCRt1Frmd17iP2cPirXTX8T6oqbQ5kbY4owWy7f2jgbvitjcGUFbC+hr3QuEm4xucAUH1Rz0Vzp4qynbHM1w6Di0Et7Owr1clzjFx0Ldss2p7XO7gOB+TvFdGjeJY2yNBAe0EA8d6CUREBERAREQEREBERAREQSqb5TsC00eeHpH7K4+0+xVvXVqrLtbqaKgYHvZNtOGcbjz9iCkXgutVtr7HITseejqIO4g5W6vjRW1+mLZUdKlkgY58YOA47+I7gvdrnTdVdIKSa3xNkqIm+bkbnBLcbvisl8sVx27NcKCNk1VQRtY+IuxtY6veUGDSUbbdrC8WymJbSMBcyPO5pBHz+C2nlCx/ZOryMjbjyOzbCw6XtNxZebhebrEyCSq3Mha7JaM5OfcFl8of/AGnVde3Hj/WEFSq6GO1z6RrqZzxU1QiMz9o9LpR/DDyFsDbKe7eUG80tZtOhbDtloONohsQHs359y+aW1Xm7zabM1PEyhoo4ntna/O0zoOGf82GgLe2+0VsWt7pcpGBtLPThkb9r7R+r/wCJ+CCp2+qmh8nNwEUrgfSwwb+AOxnHf+6zTUUFlrdMVFvaYpKlgM2CemTs5z/qK2Nt0tXu0bXWyoY2GqfUiSIF2QdnZx78FRTWa93Kvs4uVKylp7Y0N2tsEyYx/wAQgxUVpohr+4QeZzFAzzsbcnc7AOfeVqYKGG4afvd3qmmSsjm2mSZ3s57laprVdYNaS3Klp4pqWqaGSOc/BY3AB3de5al9iv1FS3G0UtHFNS1ku02fbxstzzHcgtumnmr0/b5KnErzECS8Zz1LajgvHZqL6OtVLRE7RhjDS4cCea9iAiIgIiICIiAiIgIiICIiAiIglFCIJXhvVthu9tloah0jY5MHajOCCCCPBe1EGKkp2UlLBTRfdwxtjZnjhowFmUIglFCIClQiCVCIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiIP/2Q==" alt="image description">
+        </div>
+ 
+            {%endif%}
+
+            <!-- <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
+            <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image"> -->
+            <div class="mt-4 md:mt-0">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{post.title}}</h2>
+                <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">{{post.description|linebreaks}}</p>
+                <a href="{%url 'home'%}" class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
+                    Back to home
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+<p><small> 🕑{{post.published}}</small></p>
+      
+     <small>👁{{post.views}}</small>
+      <div class="list-group list-group-horizontal btn-group" id="likesarea" role="group"></div>
+
+</head>
+<!-- <body><div class="col-md-15">
+                        <div class="cards">
+                            <div class="row no-gutters border rounded  flex-md-row mb-4 shadow-sm h-md-250">
+                                <div class="col p-4 d-flex flex-column position-static">
+                                    <h3 class="my-4"><a href="{%url 'home' %}">{{post.title}}</a></h3>
+                                    {%if post.photo%}
+                                    <img class="h-auto max-w-lg transition-all duration-300 rounded-lg blur-sm hover:blur-none" src="{{post.photo.url}}" alt="image description">
+                                    {%endif%}
+                                    <div style="display:flex">
+                                        {% for tag in post.tags.all %}
+                                        <a href="" class="mr-1 badge badge-info">#{{ tag }}</a>
+                                        
+                                        {% endfor %}
+                                    </div>
+                                    <p class="mb-auto">{{post.description|linebreaks}}</p>
+                                    <small><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-day" viewBox="0 0 16 16">
+                                        <path d="M4.684 12.523v-2.3h2.261v-.61H4.684V7.801h2.464v-.61H4v5.332zm3.296 0h.676V9.98c0-.554.227-1.007.953-1.007.125 0 .258.004.329.015v-.613a2 2 0 0 0-.254-.02c-.582 0-.891.32-1.012.567h-.02v-.504H7.98zm2.805-5.093c0 .238.192.425.43.425a.428.428 0 1 0 0-.855.426.426 0 0 0-.43.43m.094 5.093h.672V8.418h-.672z"/>
+                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"/>
+                                        <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z"/>
+                                      </svg> {{post.published}}</small>
+                                     <small> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
+                                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                                      </svg>{{post.views}}</small>
+                                      <div class="list-group list-group-horizontal btn-group" id="likesarea" role="group"> 
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>       
+                    </div>
+                 -->
+                  {%if request.user.is_authenticated%}
+                  <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M15 9.7h4a2 2 0 0 1 1.6.9 2 2 0 0 1 .3 1.8l-2.4 7.2c-.3.9-.5 1.4-1.9 1.4-2 0-4.2-.7-6.1-1.3L9 19.3V9.5A32 32 0 0 0 13.2 4c.1-.4.5-.7.9-.9h1.2c.4.1.7.4 1 .7l.2 1.3L15 9.7ZM4.2 10H7v8a2 2 0 1 1-4 0v-6.8c0-.7.5-1.2 1.2-1.2Z" clip-rule="evenodd"/>
+                      </svg>
+                      <button style="background-color: transparent; border: none; box-shadow: none;" type="submit"><i class="far fa-thumbs-up"></i> <span> {{ post.likes.all.count }}</span></button>
+                </form>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M9 14.3H5a2 2 0 0 1-1.6-.9 2 2 0 0 1-.3-1.8l2.4-7.2C5.8 3.5 6 3 7.4 3c2 0 4.2.7 6.1 1.3l1.4.4v9.8a32 32 0 0 0-4.2 5.5c-.1.4-.5.7-.9.9a1.7 1.7 0 0 1-2.1-.7c-.2-.4-.3-.8-.3-1.3L9 14.3Zm10.8-.3H17V6a2 2 0 1 1 4 0v6.8c0 .7-.5 1.2-1.2 1.2Z" clip-rule="evenodd"/>
+                      </svg>
+                      <button style="background-color: transparent; border: none; box-shadow: none;" type="submit"><i class="far fa-thumbs-down" ></i> <span> {{ post.dislikes.all.count }}</span></button>
+                </form>
+                {%else%}
+                
+                {%endif%}
+                {%if request.user.is_authenticated%}
+                <hr/>
+                <h3>Add Comment</h3>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ comment_form.as_p }}
+                    <button type="submit" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Comment</button>
+                </form>
+    
+                {% with comments.count as total_comments %}
+                    <h3 class="mt-5">
+                        {{ total_comments }} comment{{ total_comments|pluralize }}
+                    </h3>
+                    
+                {% endwith %}
+        
+                {% if not post.comments.all %}
+                    No comments yet
+                
+                {% else %}
+                    {% for comment in post.get_comments %}
+
+                        {% include 'comment.html' with comment=comment %}
+                    {% endfor %}
+                {% endif %}
+                {%else%}
+                <form method="POST" action="#">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M15 9.7h4a2 2 0 0 1 1.6.9 2 2 0 0 1 .3 1.8l-2.4 7.2c-.3.9-.5 1.4-1.9 1.4-2 0-4.2-.7-6.1-1.3L9 19.3V9.5A32 32 0 0 0 13.2 4c.1-.4.5-.7.9-.9h1.2c.4.1.7.4 1 .7l.2 1.3L15 9.7ZM4.2 10H7v8a2 2 0 1 1-4 0v-6.8c0-.7.5-1.2 1.2-1.2Z" clip-rule="evenodd"/>
+                      </svg>
+                      <button style="background-color: transparent; border: none; box-shadow: none;" type="submit"><i class="far fa-thumbs-up"></i> <span> {{ post.likes.all.count }}</span></button>
+                </form>
+                <form method="POST" action="#">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M9 14.3H5a2 2 0 0 1-1.6-.9 2 2 0 0 1-.3-1.8l2.4-7.2C5.8 3.5 6 3 7.4 3c2 0 4.2.7 6.1 1.3l1.4.4v9.8a32 32 0 0 0-4.2 5.5c-.1.4-.5.7-.9.9a1.7 1.7 0 0 1-2.1-.7c-.2-.4-.3-.8-.3-1.3L9 14.3Zm10.8-.3H17V6a2 2 0 1 1 4 0v6.8c0 .7-.5 1.2-1.2 1.2Z" clip-rule="evenodd"/>
+                      </svg>
+                      <button style="background-color: transparent; border: none; box-shadow: none;" type="submit"><i class="far fa-thumbs-down" ></i> <span> {{ post.dislikes.all.count }}</span></button>
+                </form>
+
+
+                                
+                <label for="helper-text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Comment</label>
+                <input type="email" id="helper-text" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="comment write!">
+                <button class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"><span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+Comment write!                    </span>
+                    </button>
+                        
+                        <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-md max-h-full">
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                    <div class="p-4 md:p-5 text-center">
+                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                        </svg>
+                                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Comment yozish uchun ro'yxatdan o'ting?</h3>
+                                        <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"><a href="{%url 'signup'%}">
+                                        Signup</a></button>
+                                        <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><a href="{%url 'login'%}">Login</a></button>
+                    
+                {%endif%}
+             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+
+</body>
+</html>
