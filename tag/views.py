@@ -114,19 +114,22 @@ def signup(request):
 
 
 def Login(request):
-	login_form=LoginForm()
-	if request.method=='POST':
-		login_form=LoginForm(data=request.POST)
-		if login_form.is_valid():
-			username=request.POST.get('username')
-			password=request.POST.get('password')
-			user=authenticate(username=username,password=password)
-
-			if user is not None	:
-				login(request,user)
-				return redirect('home')
-		return	render(request,'login.html',{'login_form':login_form})
-	return	render(request,'login.html',{'login_form':login_form})
+    form = LoginForm()
+    message = ''
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
+            )
+            if user is not None:
+                login(request, user)
+                message = f'Hello {user.username}! You have been logged in'
+                return redirect('home')
+            else:
+                message = 'Login failed!'
+    return	render(request,'login.html',{'login_form':form,'message': message})
 
 def Logout(request):
 	logout(request)
